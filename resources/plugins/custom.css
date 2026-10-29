@@ -672,3 +672,336 @@ background-image: linear-gradient(to right, #3c3c4e, #245b80);
     transform: translate(230px, 0); } }
 
 /*# sourceMappingURL=custom.css.map */
+
+/* --------------------------------------------------------------------------
+   2026 POS refresh
+   A calm, high-contrast palette designed for long retail shifts and touch use.
+   Keep the legacy AdminLTE selectors so existing POS markup can adopt it
+   without changing checkout behaviour.
+   -------------------------------------------------------------------------- */
+:root {
+  --pos-brand: #087f6e;
+  --pos-brand-strong: #066858;
+  --pos-brand-soft: #e5f5f0;
+  --pos-ink: #172b27;
+  --pos-muted: #647873;
+  --pos-line: #dce8e4;
+  --pos-canvas: #f3f7f5;
+  --pos-surface: #ffffff;
+  --pos-success: #16845b;
+  --pos-danger: #c24149;
+  --pos-warning: #a96511;
+  --pos-radius: 12px;
+  --pos-shadow: 0 8px 24px rgba(22, 54, 45, .07);
+}
+
+body {
+  color: var(--pos-ink);
+  background: var(--pos-canvas);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+  color: var(--pos-ink);
+}
+
+.content-wrapper,
+.right-side,
+.main-footer {
+  background-color: var(--pos-canvas);
+}
+
+/* Consistent brand color across all of the legacy AdminLTE skin options. */
+.skin-blue .main-header .logo,
+.skin-blue-light .main-header .logo,
+.skin-red .main-header .logo,
+.skin-red-light .main-header .logo,
+.skin-purple .main-header .logo,
+.skin-purple-light .main-header .logo,
+.skin-green .main-header .logo,
+.skin-green-light .main-header .logo,
+.skin-yellow .main-header .logo,
+.skin-yellow-light .main-header .logo,
+.skin-black .main-header .logo,
+.skin-black-light .main-header .logo {
+  background: var(--pos-brand);
+  color: #fff;
+}
+.skin-blue .main-header .navbar,
+.skin-blue-light .main-header .navbar,
+.skin-red .main-header .navbar,
+.skin-red-light .main-header .navbar,
+.skin-purple .main-header .navbar,
+.skin-purple-light .main-header .navbar,
+.skin-green .main-header .navbar,
+.skin-green-light .main-header .navbar,
+.skin-yellow .main-header .navbar,
+.skin-yellow-light .main-header .navbar,
+.skin-black .main-header .navbar,
+.skin-black-light .main-header .navbar {
+  background: var(--pos-brand);
+}
+.skin-blue .main-header .navbar .nav > li > a,
+.skin-blue-light .main-header .navbar .nav > li > a,
+.skin-red .main-header .navbar .nav > li > a,
+.skin-red-light .main-header .navbar .nav > li > a,
+.skin-purple .main-header .navbar .nav > li > a,
+.skin-purple-light .main-header .navbar .nav > li > a,
+.skin-green .main-header .navbar .nav > li > a,
+.skin-green-light .main-header .navbar .nav > li > a,
+.skin-yellow .main-header .navbar .nav > li > a,
+.skin-yellow-light .main-header .navbar .nav > li > a,
+.skin-black .main-header .navbar .nav > li > a,
+.skin-black-light .main-header .navbar .nav > li > a,
+.skin-black .main-header .navbar > .sidebar-toggle,
+.skin-black-light .main-header .navbar > .sidebar-toggle {
+  color: #fff;
+}
+.skin-blue .main-header .navbar .nav > li > a:hover,
+.skin-blue-light .main-header .navbar .nav > li > a:hover,
+.skin-red .main-header .navbar .nav > li > a:hover,
+.skin-red-light .main-header .navbar .nav > li > a:hover,
+.skin-purple .main-header .navbar .nav > li > a:hover,
+.skin-purple-light .main-header .navbar .nav > li > a:hover,
+.skin-green .main-header .navbar .nav > li > a:hover,
+.skin-green-light .main-header .navbar .nav > li > a:hover,
+.skin-yellow .main-header .navbar .nav > li > a:hover,
+.skin-yellow-light .main-header .navbar .nav > li > a:hover,
+.skin-black .main-header .navbar .nav > li > a:hover,
+.skin-black-light .main-header .navbar .nav > li > a:hover {
+  background: var(--pos-brand-strong);
+  color: #fff;
+}
+.skin-blue .main-sidebar,
+.skin-red .main-sidebar,
+.skin-purple .main-sidebar,
+.skin-green .main-sidebar,
+.skin-yellow .main-sidebar,
+.skin-black .main-sidebar {
+  background: #143b35;
+}
+.skin-blue .sidebar-menu > li:hover > a,
+.skin-blue .sidebar-menu > li.active > a,
+.skin-blue .sidebar-menu > li.menu-open > a,
+.skin-red .sidebar-menu > li:hover > a,
+.skin-red .sidebar-menu > li.active > a,
+.skin-red .sidebar-menu > li.menu-open > a,
+.skin-purple .sidebar-menu > li:hover > a,
+.skin-purple .sidebar-menu > li.active > a,
+.skin-purple .sidebar-menu > li.menu-open > a,
+.skin-green .sidebar-menu > li:hover > a,
+.skin-green .sidebar-menu > li.active > a,
+.skin-green .sidebar-menu > li.menu-open > a,
+.skin-yellow .sidebar-menu > li:hover > a,
+.skin-yellow .sidebar-menu > li.active > a,
+.skin-yellow .sidebar-menu > li.menu-open > a,
+.skin-black .sidebar-menu > li:hover > a,
+.skin-black .sidebar-menu > li.active > a,
+.skin-black .sidebar-menu > li.menu-open > a {
+  color: #fff;
+  background: rgba(255, 255, 255, .09);
+  border-left-color: #53c8a6;
+}
+.skin-blue-light .main-sidebar,
+.skin-red-light .main-sidebar,
+.skin-purple-light .main-sidebar,
+.skin-green-light .main-sidebar,
+.skin-yellow-light .main-sidebar,
+.skin-black-light .main-sidebar {
+  background: #fff;
+}
+.skin-blue-light .sidebar-menu > li.active > a,
+.skin-red-light .sidebar-menu > li.active > a,
+.skin-purple-light .sidebar-menu > li.active > a,
+.skin-green-light .sidebar-menu > li.active > a,
+.skin-yellow-light .sidebar-menu > li.active > a,
+.skin-black-light .sidebar-menu > li.active > a {
+  color: var(--pos-brand-strong);
+  background: var(--pos-brand-soft);
+  border-left-color: var(--pos-brand);
+}
+.skin-blue-light .sidebar-menu > li:hover > a,
+.skin-red-light .sidebar-menu > li:hover > a,
+.skin-purple-light .sidebar-menu > li:hover > a,
+.skin-green-light .sidebar-menu > li:hover > a,
+.skin-yellow-light .sidebar-menu > li:hover > a,
+.skin-black-light .sidebar-menu > li:hover > a {
+  color: var(--pos-brand-strong);
+  background: #f4faf7;
+}
+.skin-blue-light .sidebar a,
+.skin-red-light .sidebar a,
+.skin-purple-light .sidebar a,
+.skin-green-light .sidebar a,
+.skin-yellow-light .sidebar a,
+.skin-black-light .sidebar a {
+  color: #45635b;
+}
+
+/* Shared modern controls and panels. */
+.btn,
+.form-control,
+.input-group-addon,
+.select2-container--default .select2-selection--single,
+.select2-container--default .select2-selection--multiple {
+  border-radius: 8px;
+}
+.btn {
+  min-height: 38px;
+  font-weight: 600;
+  transition: background-color .16s ease, border-color .16s ease, box-shadow .16s ease, transform .16s ease;
+}
+.btn:active { transform: translateY(1px); }
+.btn-primary,
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active,
+.btn-primary.active,
+.open > .dropdown-toggle.btn-primary {
+  color: #fff;
+  background-color: var(--pos-brand);
+  border-color: var(--pos-brand);
+}
+.btn-primary:hover,
+.btn-primary:focus { background-color: var(--pos-brand-strong); border-color: var(--pos-brand-strong); }
+.btn-success,
+.btn-success:hover,
+.btn-success:focus,
+.btn-success:active {
+  color: #fff;
+  background-color: var(--pos-success);
+  border-color: var(--pos-success);
+}
+.form-control {
+  min-height: 38px;
+  border-color: #ceddd8;
+  color: var(--pos-ink);
+  box-shadow: none;
+}
+.form-control:focus,
+.select2-container--default.select2-container--focus .select2-selection--multiple,
+.select2-container--default.select2-container--open .select2-selection--single {
+  border-color: var(--pos-brand);
+  box-shadow: 0 0 0 3px rgba(8, 127, 110, .13);
+}
+.box,
+.info-box,
+.modal-content {
+  border: 1px solid var(--pos-line);
+  border-radius: var(--pos-radius);
+  box-shadow: var(--pos-shadow) !important;
+}
+.box { overflow: hidden; }
+.box .box-header { border-bottom: 1px solid #edf2f0; }
+.table > thead > tr > th {
+  color: #4f6962;
+  background: #f5f9f7;
+  border-bottom: 1px solid var(--pos-line);
+  font-weight: 700;
+}
+.table > tbody > tr > td { border-top-color: #edf2f0; }
+.label-primary,
+.bg-light-blue,
+.progress-bar { background-color: var(--pos-brand) !important; }
+.text-primary,
+.text-light-blue { color: var(--pos-brand) !important; }
+
+/* Checkout workspace: product search/catalog on one side, live basket on the other. */
+#add_pos_sell_form,
+#edit_pos_sell_form {
+  color: var(--pos-ink);
+}
+#add_pos_sell_form .form-control,
+#edit_pos_sell_form .form-control,
+#add_pos_sell_form .select2-container .select2-selection,
+#edit_pos_sell_form .select2-container .select2-selection {
+  border-color: #d2e0dc;
+  border-radius: 8px;
+}
+#add_pos_sell_form .pos_product_div,
+#edit_pos_sell_form .pos_product_div,
+.pos_product_div {
+  border: 1px solid var(--pos-line);
+  border-radius: var(--pos-radius);
+  background: var(--pos-surface);
+  box-shadow: var(--pos-shadow);
+}
+.pos_product_div .product_box,
+.pos_product_div .product_box .product-title {
+  border-radius: 10px;
+}
+.pos_product_div .product_box {
+  border: 1px solid var(--pos-line);
+  background: var(--pos-surface);
+  box-shadow: 0 2px 7px rgba(22, 54, 45, .05);
+  transition: border-color .16s ease, box-shadow .16s ease, transform .16s ease;
+}
+.pos_product_div .product_box:hover {
+  border-color: #83c7b4;
+  box-shadow: 0 8px 18px rgba(8, 127, 110, .12);
+  transform: translateY(-2px);
+}
+.pos_product_div .product_box:focus-within {
+  outline: 3px solid rgba(8, 127, 110, .2);
+}
+#pos_table {
+  width: 100%;
+  border: 1px solid var(--pos-line);
+  border-radius: 10px;
+  border-collapse: separate;
+  border-spacing: 0;
+  overflow: hidden;
+  background: #fff;
+}
+#pos_table > thead > tr > th {
+  padding: 11px 9px;
+  color: #4f6962;
+  background: #f2f8f5;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: .035em;
+}
+#pos_table > tbody > tr > td { padding: 9px; vertical-align: middle; }
+#pos_table > tbody > tr:hover { background-color: #f8fcfa; }
+#pos_table .pos_quantity,
+#pos_table .pos_unit_price,
+#pos_table .pos_line_total,
+#pos_table input {
+  min-height: 36px;
+  border-radius: 7px;
+}
+#pos_table .pos_remove_row { color: var(--pos-danger); }
+#pos_table:not(.pos-has-rows) { min-height: 100px; }
+.pos-form-actions,
+#pos_form_totals {
+  border-radius: 10px;
+}
+.pos-form-actions .btn,
+#add_pos_sell_form .pos-form-actions .btn,
+#edit_pos_sell_form .pos-form-actions .btn {
+  min-height: 44px;
+}
+#final_total_input,
+#add_pos_sell_form .total_quantity,
+#edit_pos_sell_form .total_quantity {
+  font-variant-numeric: tabular-nums;
+}
+
+@media (max-width: 767px) {
+  #add_pos_sell_form .btn,
+  #edit_pos_sell_form .btn { min-height: 42px; }
+  #pos_table { font-size: 13px; }
+  #pos_table > thead > tr > th,
+  #pos_table > tbody > tr > td { padding: 7px 5px; }
+  .pos_product_div .product_box { min-height: 100px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
+}
