@@ -35,6 +35,14 @@ class RouteServiceProvider extends ServiceProvider
 
             Route::middleware('web')
                 ->group(base_path('routes/web.php'));
+
+            // Built-in lightweight super admin area (/superadmin).
+            // Only registered when the paid Superadmin module is NOT installed,
+            // so the real module takes precedence if it is added later.
+            if (file_exists(base_path('routes/superadmin.php')) && ! is_dir(base_path('Modules/Superadmin'))) {
+                Route::middleware('web')
+                    ->group(base_path('routes/superadmin.php'));
+            }
         });
     }
 

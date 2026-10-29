@@ -791,6 +791,21 @@ class AdminSidebarMenu
             </svg>', 'active' => request()->segment(1) == 'manage-modules'])->order(60);
             }
 
+            //Built-in Super Admin menu (only when the paid Superadmin module is not installed)
+            $administrator_usernames = array_filter(array_map('trim', explode(',', strtolower((string) config('constants.administrator_usernames')))));
+            if (! is_dir(base_path('Modules/Superadmin'))
+                && ! empty($administrator_usernames)
+                && in_array(strtolower(auth()->user()->username), $administrator_usernames)
+                && \Illuminate\Support\Facades\Route::has('core_superadmin.index')) {
+                $menu->url(route('core_superadmin.index'), __('core_superadmin.super_admin'), ['icon' => '<svg xmlns="http://www.w3.org/2000/svg" class="tw-size-5 tw-shrink-0" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+              <path d="M12 3l8 4.5v9l-8 4.5l-8 -4.5v-9l8 -4.5"></path>
+              <path d="M12 12l8 -4.5"></path>
+              <path d="M12 12v9"></path>
+              <path d="M12 12l-8 -4.5"></path>
+            </svg>', 'active' => request()->segment(1) == 'superadmin'])->order(61);
+            }
+
             //Booking menu
             if (in_array('booking', $enabled_modules) && (auth()->user()->can('crud_all_bookings') || auth()->user()->can('crud_own_bookings'))) {
                 $menu->url(action([\App\Http\Controllers\Restaurant\BookingController::class, 'index']), __('restaurant.bookings'), ['icon' => '<svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-calendar-check"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M11.5 21h-5.5a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v6" /><path d="M16 3v4" /><path d="M8 3v4" /><path d="M4 11h16" /><path d="M15 19l2 2l4 -4" /></svg>', 'active' => request()->segment(1) == 'bookings'])->order(65);
