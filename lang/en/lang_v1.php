@@ -1673,4 +1673,7 @@ return [
     'enter_customer_name_phone' => 'Enter Customer name / phone',
     'cart_is_empty' => 'Your cart is empty',
     'cart_is_empty_hint' => 'Scan a barcode, tap a product tile, or type to search.',
+    'gym_dashboard' => 'Gym Dashboard',
+    'gym_overview' => 'Overview',
+    'payroll' => 'Payroll',
 ];

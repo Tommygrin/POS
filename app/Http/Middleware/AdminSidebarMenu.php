@@ -791,6 +791,24 @@ class AdminSidebarMenu
             </svg>', 'active' => request()->segment(1) == 'manage-modules'])->order(60);
             }
 
+            //Gym dashboard & Payroll (static dashboard in public/gym) - visible to business admins
+            if ($is_admin && file_exists(public_path('gym/index.html'))) {
+                $menu->dropdown(
+                    __('lang_v1.gym_dashboard'),
+                    function ($sub) {
+                        $sub->url(url('gym/index.html#overview'), __('lang_v1.gym_overview'), ['icon' => '']);
+                        $sub->url(url('gym/index.html#payroll'), __('lang_v1.payroll'), ['icon' => '']);
+                    },
+                    ['icon' => '<svg xmlns="http://www.w3.org/2000/svg" class="tw-size-5 tw-shrink-0" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+              <path d="M3 10h18"></path>
+              <path d="M7 15h.01"></path>
+              <path d="M11 15h2"></path>
+              <path d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2z"></path>
+            </svg>', 'active' => request()->segment(1) == 'gym']
+                )->order(59);
+            }
+
             //Built-in Super Admin menu (only when the paid Superadmin module is not installed)
             $administrator_usernames = array_filter(array_map('trim', explode(',', strtolower((string) config('constants.administrator_usernames')))));
             if (! is_dir(base_path('Modules/Superadmin'))
